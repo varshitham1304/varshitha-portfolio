@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M. Varshitha — Pharmacy Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0B1D35;
+      --ink:    #1A2E48;
+      --steel:  #2C4A6E;
+      --accent: #C8963E;
+      --gold:   #E8B85A;
+      --mist:   #E8EEF5;
+      --white:  #FAFCFF;
+      --text:   #2D3748;
+      --light:  #718096;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      background: rgba(11,29,53,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,150,62,0.25);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 70% 50%, rgba(44,74,110,0.55) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 5vw 4rem 8vw;
+      position: relative; z-index: 2;
+    }
+    .hero-tag {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .hero-tag::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--gold);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 600; line-height: 1.05;
+      color: var(--white); margin-bottom: 1.6rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(255,255,255,0.6); line-height: 1.7;
+      max-width: 36ch; margin-bottom: 2.8rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      background: var(--accent); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.06em; font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--gold); transform: translateY(-2px); }
+    .hero-right {
+      display: flex; align-items: center; justify-content: center;
+      padding: 8rem 8vw 4rem 2rem;
+      position: relative; z-index: 2;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,150,62,0.2);
+      border-radius: 4px; padding: 2.4rem;
+      width: 100%; max-width: 360px;
+      backdrop-filter: blur(4px);
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.7); font-size: 0.88rem;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 2rem; height: 2rem; background: rgba(200,150,62,0.15);
+      border-radius: 2px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--gold); font-size: 0.9rem;
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 6rem 8vw; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.7rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: rgba(200,150,62,0.25);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 600; color: var(--navy);
+      margin-bottom: 3rem; line-height: 1.2;
+    }
+
+    /* ── ABOUT / OBJECTIVE ── */
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-body { font-size: 1.05rem; line-height: 1.85; color: var(--text); }
+    .stat-box {
+      background: var(--navy); color: var(--white);
+      padding: 2.5rem; border-radius: 2px;
+    }
+    .stat-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 600; color: var(--gold);
+    }
+    .stat-box p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.3rem; }
+    .stat-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0; }
+
+    /* ── EDUCATION ── */
+    .education { background: var(--mist); }
+    .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .edu-card {
+      background: var(--white);
+      border-left: 3px solid var(--accent);
+      padding: 1.8rem 2rem;
+      border-radius: 0 2px 2px 0;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 0.4rem 2rem; align-items: start;
+      box-shadow: 0 2px 12px rgba(11,29,53,0.06);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .edu-card.visible { opacity: 1; transform: translateY(0); }
+    .edu-card h3 { font-size: 1rem; font-weight: 500; color: var(--navy); }
+    .edu-card .inst { font-size: 0.85rem; color: var(--light); margin-top: 0.2rem; }
+    .edu-card .grade {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--accent);
+      text-align: right; white-space: nowrap;
+    }
+    .edu-card .year { font-size: 0.78rem; color: var(--light); text-align: right; }
+
+    /* ── SKILLS ── */
+    .skills { background: var(--navy); }
+    .skills h2 { color: var(--white); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .skill-group h4 {
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .skill-tag {
+      display: inline-block; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem; padding: 0.4rem 0.9rem;
+      border-radius: 2px; margin: 0.3rem 0.3rem 0 0;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience { background: var(--white); }
+    .exp-card {
+      background: var(--mist); padding: 2.5rem;
+      border-radius: 2px; max-width: 700px;
+      border-top: 3px solid var(--accent);
+    }
+    .exp-card .role { font-size: 1.15rem; font-weight: 500; color: var(--navy); }
+    .exp-card .company { color: var(--accent); font-size: 0.88rem; margin: 0.3rem 0 1rem; }
+
+    /* ── PROJECTS ── */
+    .projects { background: var(--mist); }
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; }
+    .proj-card {
+      background: var(--white); padding: 2rem;
+      border-radius: 2px; border-bottom: 3px solid var(--accent);
+      box-shadow: 0 2px 12px rgba(11,29,53,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(11,29,53,0.1); }
+    .proj-type {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.7rem;
+    }
+    .proj-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+    .proj-card p { font-size: 0.85rem; color: var(--light); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievements { background: var(--navy); }
+    .achievements h2 { color: var(--white); }
+    .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .ach-card {
+      padding: 1.8rem; border: 1px solid rgba(200,150,62,0.2);
+      border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .ach-card:hover { border-color: var(--gold); }
+    .ach-card .ach-source {
+      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.6rem;
+    }
+    .ach-card p { color: rgba(255,255,255,0.75); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.4);
+      text-align: center; padding: 2.5rem;
+      font-size: 0.8rem; letter-spacing: 0.04em;
+    }
+    footer span { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .about-grid, .skills-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 5vw; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">M. Varshitha</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">B.Pharm Student &amp; Researcher</div>
+    <h1>M.<br>Varshitha</h1>
+    <p class="hero-sub">
+      Pharmacy undergraduate with a passion for drug discovery, pharmaceutical research, and innovation in healthcare science.
+    </p>
+    <a href="#about" class="hero-cta">Explore Profile ↓</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <span>Tirupati — 517501, Andhra Pradesh</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <span>+91 9000676572</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">✉</div>
+        <span>varshitham1304@gmail.com</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">in</div>
+        <span>linkedin.com/in/varshitha-mediboyina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">Career Objective</div>
+  <div class="about-grid fade-in">
+    <div>
+      <h2>Driven by Science,<br>Defined by Purpose</h2>
+      <p class="about-body">
+        To secure an opportunity in a reputed organization where I can apply my skills and innovative ideas effectively, contribute to organizational growth, and continuously enhance my knowledge and professional abilities as a valuable asset to the firm.
+      </p>
+    </div>
+    <div class="stat-box">
+      <h3>8.85</h3>
+      <p>Current CGPA — B.Pharm</p>
+      <hr class="stat-divider">
+      <h3>93.1%</h3>
+      <p>Class XII — Narayana Junior College</p>
+      <hr class="stat-divider">
+      <h3>10.0</h3>
+      <p>SSC Grade — Narayana E.M. School</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="section-label">Academic Journey</div>
+  <h2>Education</h2>
+  <div class="edu-list">
+    <div class="edu-card">
+      <div>
+        <h3>Bachelor of Pharmacy (B.Pharm) — Pursuing</h3>
+        <p class="inst">Seven Hills College of Pharmacy (Autonomous), Tirupati, Andhra Pradesh</p>
+      </div>
+      <div>
+        <div class="grade">8.85 CGPA</div>
+        <div class="year">2022 – 2026</div>
+      </div>
+    </div>
+    <div class="edu-card" style="transition-delay:0.1s">
+      <div>
+        <h3>Intermediate — Class XII</h3>
+        <p class="inst">Narayana Junior College, Tirupati</p>
+      </div>
+      <div>
+        <div class="grade">93.1%</div>
+        <div class="year">2020 – 2022</div>
+      </div>
+    </div>
+    <div class="edu-card" style="transition-delay:0.2s">
+      <div>
+        <h3>Secondary School Certificate — SSC</h3>
+        <p class="inst">Narayana E.M. School, Tirupati</p>
+      </div>
+      <div>
+        <div class="grade">10.0</div>
+        <div class="year">2019 – 2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label" style="color:rgba(200,150,62,0.7)">Capabilities</div>
+  <h2>Skills &amp; Strengths</h2>
+  <div class="skills-grid fade-in">
+    <div class="skill-group">
+      <h4>Technical</h4>
+      <span class="skill-tag">Microsoft Office Tools</span>
+      <span class="skill-tag">Basic AI Tools</span>
+      <span class="skill-tag">Molecular Docking</span>
+      <span class="skill-tag">Chemical Structure Drawing</span>
+    </div>
+    <div class="skill-group">
+      <h4>Soft Skills</h4>
+      <span class="skill-tag">Communication</span>
+      <span class="skill-tag">Leadership</span>
+      <span class="skill-tag">Problem-Solving</span>
+      <span class="skill-tag">Teamwork</span>
+      <span class="skill-tag">Self-Discipline</span>
+    </div>
+    <div class="skill-group">
+      <h4>Additional</h4>
+      <span class="skill-tag">Photography</span>
+      <span class="skill-tag">Event Management</span>
+      <span class="skill-tag">Bilingual: English &amp; Telugu</span>
+    </div>
+  </div>
+
+  <!-- Internship -->
+  <div style="margin-top:4rem;" class="fade-in">
+    <div class="section-label" style="color:rgba(200,150,62,0.7)">Work Experience</div>
+    <h2 style="color:var(--white)">Internship</h2>
+    <div class="exp-card">
+      <div class="role">Industrial Intern</div>
+      <div class="company">Giyaan Pharma Private Limited, Tirupati, India</div>
+      <p style="color:var(--text);font-size:0.9rem;line-height:1.7;">
+        Hands-on industrial training in pharmaceutical operations, gaining practical exposure to manufacturing processes and quality standards in a professional pharma environment.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-label">Research Work</div>
+  <h2>Projects &amp; Publications</h2>
+  <div class="proj-grid">
+    <div class="proj-card fade-in">
+      <div class="proj-type">Major Project</div>
+      <h3>Shilajit &amp; Curcumin Ethosomes Loaded Hydrogel</h3>
+      <p>Formulation and Evaluation for the Treatment of Osteosarcoma — exploring novel drug delivery systems.</p>
+    </div>
+    <div class="proj-card fade-in" style="transition-delay:0.12s">
+      <div class="proj-type">Mini Project</div>
+      <h3>Development of Herbal Pain Oil</h3>
+      <p>Herbal formulation development targeting pain management through natural pharmaceutical ingredients.</p>
+    </div>
+    <div class="proj-card fade-in" style="transition-delay:0.24s">
+      <div class="proj-type">Publication — Review Article</div>
+      <h3>Digital Twins in Pharmaceutical Development</h3>
+      <p>"Digital Twins in Pharmaceutical Development and Manufacturing: A Paradigm Shift" — published review article.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+  <div class="section-label" style="color:rgba(200,150,62,0.7)">Recognition</div>
+  <h2>Achievements &amp; Certifications</h2>
+  <div class="ach-grid fade-in">
+    <div class="ach-card">
+      <div class="ach-source">NPTEL – SWAYAM</div>
+      <p>Mastering Speaking and Presentations — A Case-Based Approach</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-source">NPTEL – SWAYAM</div>
+      <p>Ethics Review of Health Research</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-source">Udemy</div>
+      <p>ICD-10 &amp; ICD-11 Medical Coding and Billing</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-source">Udemy</div>
+      <p>Business &amp; Operations Management Excellence</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-source">Conference — Seven Hills College</div>
+      <p>International Conference on Emerging Innovative Trends in Drug Discovery and Development</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-source">E-Poster — Gokul Krishna College</div>
+      <p>National Seminar on Current Achievements in Drug Delivery</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built with care · <span>M. Varshitha</span> · Tirupati, India</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .edu-card').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
